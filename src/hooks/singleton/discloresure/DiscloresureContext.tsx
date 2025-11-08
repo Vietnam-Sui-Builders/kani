@@ -2,19 +2,19 @@
 import React, { PropsWithChildren } from "react"
 import { createContext } from "react"
 import { useConnectModalDisclosureCore } from "./useConnectModalDiscloresure"
-import { useExportPrivateKeyModalDisclosureCore } from "./useExportPrivateKeyDiscloresure"
-import { useConfirmTOTPDisclosureCore } from "./useConfirmTOTPDiscloresure"
+import { useExportPrivateKeyModalDisclosureCore } from "./useExportPrivateKeyModalDiscloresure"
+import { useConfirmTOTPModalDisclosureCore } from "./useConfirmTOTPModalDiscloresure"
 import { useDepositModalDisclosureCore } from "./useDepositModalDiscloreusre"
-import { useUpdateExplorerDisclosureCore } from "./useUpdateExplorerDiscloresure"
-import { useUpdateRpcsDisclosureCore } from "./useUpdateRpcsDiscloresure"
+import { useUpdateExplorerModalDisclosureCore } from "./useUpdateExplorerModalDiscloresure"
+import { useUpdateRpcsModalDisclosureCore } from "./useUpdateRpcsModalDiscloresure"
 
 export interface DiscloresureContextType {
     connectModal: ReturnType<typeof useConnectModalDisclosureCore>
     exportPrivateKeyModal: ReturnType<typeof useExportPrivateKeyModalDisclosureCore>
-    confirmTOTPModal: ReturnType<typeof useConfirmTOTPDisclosureCore>
+    confirmTOTPModal: ReturnType<typeof useConfirmTOTPModalDisclosureCore>
     depositModal: ReturnType<typeof useDepositModalDisclosureCore>
-    updateExplorerModal: ReturnType<typeof useUpdateExplorerDisclosureCore>
-    updateRpcsModal: ReturnType<typeof useUpdateRpcsDisclosureCore>
+    updateExplorerModal: ReturnType<typeof useUpdateExplorerModalDisclosureCore>
+    updateRpcsModal: ReturnType<typeof useUpdateRpcsModalDisclosureCore>
 }
 
 export const DiscloresureContext = createContext<DiscloresureContextType | null>(null)
@@ -22,10 +22,10 @@ export const DiscloresureContext = createContext<DiscloresureContextType | null>
 export const DiscloresureProvider = ({ children }: PropsWithChildren) => {
     const connectModal = useConnectModalDisclosureCore()
     const exportPrivateKeyModal = useExportPrivateKeyModalDisclosureCore()
-    const confirmTOTPModal = useConfirmTOTPDisclosureCore()
+    const confirmTOTPModal = useConfirmTOTPModalDisclosureCore()
     const depositModal = useDepositModalDisclosureCore()
-    const updateExplorerModal = useUpdateExplorerDisclosureCore()
-    const updateRpcsModal = useUpdateRpcsDisclosureCore()
+    const updateExplorerModal = useUpdateExplorerModalDisclosureCore()
+    const updateRpcsModal = useUpdateRpcsModalDisclosureCore()
     return (
         <DiscloresureContext.Provider value={{ 
             connectModal, 

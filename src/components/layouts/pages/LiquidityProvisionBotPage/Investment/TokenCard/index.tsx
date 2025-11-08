@@ -23,6 +23,7 @@ export const TokenCard = ({ token, ownerAddress, type, limit }: TokenCardProps) 
         tokenId: token.displayId,
         ownerAddress: ownerAddress,
     })
+
     const isLimitReached = data?.balance.lte(limit)
     const renderChips = () => {
         switch (type) {

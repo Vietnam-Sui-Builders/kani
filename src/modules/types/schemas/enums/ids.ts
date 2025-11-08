@@ -13,10 +13,14 @@ export enum TokenId {
 
     // --- Solana ---
     SolUsdc = "solUsdc",
+    SolUsdt = "solUsdt",
     SolNative = "solNative",
     SolMsol = "solMsol",
     SolRay = "solRay",
+    SolPump = "solPump",
     SolOrca = "solOrca",
+    SolMtr = "solMtr",
+    SolJupiter = "solJupiter",
 }
 
 // -------------------- DexId --------------------
@@ -36,6 +40,11 @@ export enum LiquidityPoolId {
     TurbosDeepUsdc015 = "turbosDeepUsdc015",
     MomentumWalSui02 = "momentumWalSui02",
     MomentumSuiUsdc0175 = "momentumSuiUsdc0175",
+    PreviewRaydiumUsdcSol = "previewRaydiumUsdcSol",
+    PreviewOrcaUsdtSol = "previewOrcaUsdtSol",
+    PreviewMeteoraSolMsol = "previewMeteoraSolMsol",
+    PreviewJupiterSolUsdc = "previewJupiterSolUsdc",
+    PreviewRaydiumRayUsdc = "previewRaydiumRayUsdc",
 }
 
 // -------------------- CexId --------------------

@@ -10,6 +10,7 @@ import { mutationRefresh } from "./mutations"
 import { createTimeoutLink } from "./timeout"
 import { createRetryLink } from "./retry"
 import { createHttpLink } from "./http"
+import { defaultOptions } from "./options"
 
 const sessionStorage = new SessionStorage()
 
@@ -123,6 +124,7 @@ export const noCacheAuthClientWithoutRetry = new ApolloClient({
         createHttpLink()
     ]), 
     cache: new InMemoryCache(),
+    defaultOptions
 })
 
 export const noCacheAuthClient = new ApolloClient({
@@ -135,6 +137,7 @@ export const noCacheAuthClient = new ApolloClient({
         createHttpLink()
     ]),
     cache: new InMemoryCache(),
+    defaultOptions
 })
 
 export const noCacheCredentialAuthClient = new ApolloClient({
@@ -147,6 +150,7 @@ export const noCacheCredentialAuthClient = new ApolloClient({
         createHttpLink(true)
     ]),
     cache: new InMemoryCache(),
+    defaultOptions
 })
 
 export const createNoCacheCredentialAuthClientWithHeaders = (
@@ -161,4 +165,5 @@ export const createNoCacheCredentialAuthClientWithHeaders = (
         createHttpLink(true, headers)
     ]),
     cache: new InMemoryCache(),
+    defaultOptions
 })

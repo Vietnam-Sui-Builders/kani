@@ -1,9 +1,9 @@
 import React from "react"
 import { KaniModal, KaniModalContent, KaniModalHeader, KaniModalBody, KaniInputOtp, KaniButton, KaniModalFooter, KaniLink } from "../../atomic"
-import { useConfirmTOTPDisclosure, useConfirmTotpFormik } from "@/hooks/singleton"
+import { useConfirmTOTPModalDisclosure, useConfirmTotpFormik } from "@/hooks/singleton"
 
 export const ConfirmTOTPModal = () => {
-    const { isOpen, onOpenChange } = useConfirmTOTPDisclosure()
+    const { isOpen, onOpenChange } = useConfirmTOTPModalDisclosure()
     const formik = useConfirmTotpFormik()
     return (
         <KaniModal size="sm" isOpen={isOpen} onOpenChange={onOpenChange}>

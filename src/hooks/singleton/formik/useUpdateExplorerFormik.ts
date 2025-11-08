@@ -3,8 +3,9 @@ import { useFormik } from "formik"
 import { useContext } from "react"
 import * as Yup from "yup"
 import { FormikContext } from "./FormikContext"
-import { useUpdateLiquidityProvisionBotExplorerIdSwrMutation } from "../swr"
+import { useQueryLiquidityProvisionSwr, useUpdateLiquidityProvisionBotExplorerIdSwrMutation } from "../swr"
 import { runGraphQLWithToast } from "@/components/toasts"
+import { setLiquidityProvisionBot, useAppDispatch, useAppSelector } from "@/redux"
 
 export interface UpdateExplorerFormikValues {
     explorerId: ExplorerId
@@ -23,7 +24,9 @@ const validationSchema = Yup.object({
 
 export const useUpdateExplorerFormikCore = () => {
     const updateLiquidityProvisionBotExplorerIdMutation = useUpdateLiquidityProvisionBotExplorerIdSwrMutation()
-   
+    const queryLiquidityProvisionSwr = useQueryLiquidityProvisionSwr()
+    const liquidityProvisionBot = useAppSelector((state) => state.session.liquidityProvisionBot)
+    const dispatch = useAppDispatch()
     return useFormik<UpdateExplorerFormikValues>({
         initialValues,
         validationSchema,
@@ -39,6 +42,18 @@ export const useUpdateExplorerFormikCore = () => {
                 if (!response.data?.updateLiquidityProvisionBotExplorerId) {
                     throw new Error("Failed to update liquidity provision bot explorer id")
                 }
+                // optimistic update
+                if (liquidityProvisionBot) {
+                    dispatch(
+                        setLiquidityProvisionBot(
+                            {
+                                ...liquidityProvisionBot,
+                                explorerId: values.explorerId,
+                            }
+                        ))
+                }
+                // fetch the latest data
+                await queryLiquidityProvisionSwr.mutate()
                 return response.data.updateLiquidityProvisionBotExplorerId
             })
         },

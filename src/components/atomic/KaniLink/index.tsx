@@ -3,7 +3,7 @@ import React from "react"
 
 export const KaniLink = (props: LinkProps) => {
     return <Link {...props} 
-        className={cn(props.className, "text-xs cursor-pointer", {
+        className={cn(props.className, "cursor-pointer", {
             "text-foreground-500": !props.color || props.color === "foreground",
         })} />
 }

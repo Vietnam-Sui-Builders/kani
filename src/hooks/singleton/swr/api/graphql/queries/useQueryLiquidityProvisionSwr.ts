@@ -3,21 +3,23 @@ import { SwrContext } from "../../../SwrContext"
 import { useContext } from "react"
 import { setLiquidityProvisionBot, useAppDispatch, useAppSelector } from "@/redux"
 import useSWR from "swr"
+import { useParams } from "next/navigation"
 
 export const useQueryLiquidityProvisionSwrCore = () => {
+    const { id } = useParams()
+    const idString = id as string
     const dispatch = useAppDispatch()
-    const id = useAppSelector((state) => state.session.liquidityProvisionBot?.id)
     const totpVerified = useAppSelector((state) => state.session.totpVerified)
     // if id and totpVerified are not null, then return the id
     const swrMutation = useSWR(
-        (id && totpVerified) ? ["QUERY_LIQUIDITY_PROVISION_SWR_MUTATION", id] : null,
+        (idString && totpVerified) ? ["QUERY_LIQUIDITY_PROVISION_SWR_MUTATION", idString] : null,
         async () => {
-            if (!id) {
+            if (!idString) {
                 throw new Error("Id is required")
             }
             const data = await queryLiquidityProvisionBot({
                 request: {
-                    id,
+                    id: idString,
                 },
             })
             const liquidityProvisionBot = data.data?.liquidityProvisionBot

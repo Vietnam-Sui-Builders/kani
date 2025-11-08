@@ -1,6 +1,7 @@
 // Helper to display toast notifications based on GraphQL API responses
 import { GraphQLResponse } from "@/modules"
 import { addToast } from "@heroui/toast"
+import { centerPad } from "@/modules/utils"
 
 // Show a toast depending on whether the GraphQL response was successful or not
 export const showGraphQLToast = <T>(response: GraphQLResponse<T>) => {
@@ -58,4 +59,12 @@ export const runGraphQLWithToast = async <T>(
             })
         }
     }
+}
+
+export const showSuiTxToast = (txHash: string) => {
+    addToast({
+        title: "Transaction Submitted",
+        description: `Tx ${centerPad(txHash, 10, 6)} submitted successfully.`,
+        color: "success",
+    })   
 }

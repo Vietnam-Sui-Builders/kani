@@ -2,7 +2,7 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import { useContext } from "react"
 import { FormikContext } from "./FormikContext"
-import { useConfirmTOTPDisclosure } from "../discloresure"
+import { useConfirmTOTPModalDisclosure } from "../discloresure"
 
 // Form values type — only one field for the 6-digit OTP code
 export interface ConfirmTotpFormikValues {
@@ -25,7 +25,7 @@ const initialValues: ConfirmTotpFormikValues = {
 
 // Core hook — creates the Formik instance for the TOTP form
 export const useConfirmTotpFormikCore = () => {
-    const { onClose } = useConfirmTOTPDisclosure()
+    const { onClose } = useConfirmTOTPModalDisclosure()
     return useFormik<ConfirmTotpFormikValues>({
         initialValues,
         validationSchema,

@@ -1,0 +1,31 @@
+.animated-gradient stop:first-child {
+    animation: gradientShift1 6s ease-in-out infinite alternate;
+}
+  
+.animated-gradient stop:last-child {
+    animation: gradientShift2 6s ease-in-out infinite alternate;
+}
+  
+@keyframes gradientShift1 {
+    0% {
+      stop-color: hsl(var(--heroui-primary));
+    }
+    50% {
+      stop-color: hsl(var(--heroui-secondary));
+    }
+    100% {
+      stop-color: hsl(var(--heroui-primary));
+    }
+  }
+  
+  @keyframes gradientShift2 {
+    0% {
+      stop-color: hsl(var(--heroui-secondary));
+    }
+    50% {
+      stop-color: hsl(var(--heroui-primary));
+    }
+    100% {
+      stop-color: hsl(var(--heroui-secondary));
+    }
+}

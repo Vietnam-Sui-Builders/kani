@@ -20,7 +20,9 @@ export const KaniModal = (props: ModalProps) => {
 }
 
 export const KaniModalContent = (props: ModalContentProps) => {
-    return <ModalContent {...props} />
+    return <ModalContent className={
+        cn("p-0", props.className)
+    } {...props} />
 }
 
 export interface KaniModalHeaderProps extends HTMLHeroUIProps<"div"> {
@@ -30,7 +32,7 @@ export interface KaniModalHeaderProps extends HTMLHeroUIProps<"div"> {
 
 export const KaniModalHeader = (props: KaniModalHeaderProps) => {
     return (
-        <ModalHeader className="justify-center pb-2" {...props}>
+        <ModalHeader className="justify-center p-4 pb-2" {...props}>
             <div className="text-center">
                 <div className="text-lg font-bold">{props.title}</div>
                 {props.description && (
